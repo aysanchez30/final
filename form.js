@@ -1,162 +1,222 @@
-const getAppointments = async () => {
+const getAnimals = async() => {
     try {
-        return (await fetch("/api/appointments")).json();
+        return (await fetch("api/animals/")).json();
     } catch (error) {
-        console.error(error);
+        console.log(error);
     }
 };
 
-const showAppointments = async () => {
-    let appointments = await getAppointments();
-    let appointmentsDiv = document.getElementById("appointments-list");
-    appointmentsDiv.innerHTML = "";
-    appointments.forEach((appointment) => {
+const showAnimals = async() => {
+    let animals = await getAnimals();
+    let animalsDiv = document.getElementById("animal-list");
+    animalsDiv.innerHTML = "";
+    animals.forEach((animal) => {
         const section = document.createElement("section");
-        section.classList.add("appointment");
-        appointmentsDiv.append(section);
+        section.classList.add("animal");
+        animalsDiv.append(section);
 
         const a = document.createElement("a");
         a.href = "#";
         section.append(a);
 
         const h3 = document.createElement("h3");
-        h3.innerHTML = appointment.name;
+        h3.innerHTML = animal.name;
         a.append(h3);
 
-        // ... (existing code)
+        const img = document.createElement("img");
+        img.src = animal.img;
+        section.append(img);
+
+        const editButton = document.createElement("button");
+        editButton.textContent = "Edit";
+        section.append(editButton);
+
+        editButton.onclick = (e) => {
+            e.preventDefault();
+            populateEditForm(animal);
+        }
 
         a.onclick = (e) => {
             e.preventDefault();
-            displayDetails(appointment);
+            displayDetails(animal);
+        };
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+        section.append(deleteButton);
+
+        deleteButton.onclick = (e) => {
+            e.preventDefault();
+            const confirmDelete = confirm("Are you sure you want to delete this animal?");
+            if (confirmDelete) {
+                deleteAnimal(animal);
+            }
         };
     });
 };
 
-const displayDetails = (appointment) => {
-    const appointmentDetails = document.getElementById("appointments-details");
-    appointmentDetails.innerHTML = "";
 
-    const dLink = document.createElement("a");
-    dLink.innerHTML = " &#x2715;";
-    appointmentDetails.append(dLink);
-    dLink.id = "delete-link";
-
-    const eLink = document.createElement("a");
-    eLink.innerHTML = "&#9998;";
-    appointmentDetails.append(eLink);
-    eLink.id = "edit-link";
+const displayDetails = (animal) => {
+    const animalDetails = document.getElementById("animal-details");
+    animalDetails.innerHTML = "";
 
     const h3 = document.createElement("h3");
-    h3.innerHTML = `<strong>Name: </strong> ${appointment.name}`;
-    appointmentDetails.append(h3);
+    h3.innerHTML = animal.name;
+    animalDetails.append(h3);
 
-    const time = document.createElement("p");
-    time.innerHTML = `<strong>Time: </strong> ${appointment.time}`;
-    appointmentDetails.append(time);
+    const detailsList = document.createElement("ul");
+    animalDetails.append(detailsList);
 
-    const type = document.createElement("p");
-    type.innerHTML = `<strong>Appointment Type: </strong> <a href="${appointment.type}" target="_blank">Download</a>`;
-    appointmentDetails.append(type);
+    const addDetail = (label, value) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<strong>${label}:</strong> ${value}`;
+        detailsList.append(li);
+    };
 
-    // ... (existing code)
+    addDetail("Color", animal.color);
+    addDetail("Size", animal.size);
+    addDetail("Located", animal.located.join(", "));
+    addDetail("Diet", animal.diet);
+
+    const img = document.createElement("img");
+    img.src = animal.img;
+    animalDetails.append(img);
 
     eLink.onclick = (e) => {
         e.preventDefault();
         document.querySelector(".dialog").classList.remove("transparent");
-        document.getElementById("title").innerHTML = "Edit Appointment";
-        populateEditForm(appointment);
+        document.getElementById("add-edit-title").innerHTML = "Edit Animal";
     };
 
     dLink.onclick = (e) => {
         e.preventDefault();
-        deleteAppointment(appointment);
+        deleteAnimal(animal);
     };
+
+    populateEditForm(animal);
 };
 
-const deleteAppointment = async (appointment) => {
-    let response = await fetch(`/api/appointments/${appointment._id}`, {
+const deleteAnimal = async (animal) => {
+    let response = await fetch(`/api/animals/${animal._id}`, {
         method: "DELETE",
         headers: {
-            "Content-Type": "application/json;charset=utf-8",
-        },
+            "Content-Type": "application/json;charset=utf-8"
+        }
     });
 
-    if (response.status !== 200) {
-        console.log("Error deleting appointment");
+    if (response.status != 200) {
+        console.log("Error deleting");
         return;
     }
+    showAnimals();
 
     let result = await response.json();
-    showAppointments();
-    document.getElementById("appointments-details").innerHTML = "";
+    showAnimals();
+    document.getElementById("animal-details").innerHTML = "";
     resetForm();
+}
+
+const populateEditForm = (animal) => {
+    const form = document.getElementById("add-edit-animal-form");
+    form._id.value = animal._id;
+    form.name.value = animal.name;
+    form.color.value = animal.color;
+    form.size.value = animal.size;
+    form.located.value = animal.located;
+    form.diet.value = animal.diet;
+
+
+    populateLocated(animal)
 };
 
-const populateEditForm = (appointment) => {
-    const form = document.getElementById("add-edit-appointment-form");
-    form._id.value = appointment._id;
-    form.name.value = appointment.name;
-    form.time.value = appointment.time;
-    // ... (other fields)
 
-    // Clear the file input
-    form.type.value = "";
-};
+const populateLocated = (animal) => {
+    const section = document.getElementById("description-boxes");
 
-const addEditAppointment = async (e) => {
+animal.located.forEach((location) => {
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = location;
+    section.append(input);
+});
+
+}
+
+const addEditAnimal = async (e) => {
     e.preventDefault();
-    const form = document.getElementById("add-edit-appointment-form");
+    const form = document.getElementById("add-edit-animal-form");
     const formData = new FormData(form);
+    let response;
 
-    let appointment;
+    // Add a new animal
     if (form._id.value === "-1") {
         formData.delete("_id");
 
-        response = await fetch("/api/appointments", {
+        response = await fetch("/api/animals", {
             method: "POST",
-            body: formData,
+            body: formData
         });
-    } else {
-        response = await fetch(`/api/appointments/${form._id.value}`, {
+    }
+    // Edit an existing animal
+    else {
+        response = await fetch(`/api/animals/${form._id.value}`, {
             method: "PUT",
-            body: formData,
+            body: formData
         });
     }
 
     if (response.status !== 200) {
-        console.log("Error posting");
+        console.log("Error posting data");
+        return;
     }
-
-    appointment = await response.json();
-
-    if (form._id.value !== "-1") {
-        displayDetails(appointment);
-    }
+    showAnimals ();
 
     resetForm();
-    document.querySelector(".dialog").classList.add("transparent");
-    showAppointments();
+    const dialog = document.querySelector(".dialog");
+    dialog.classList.add("transparent");
 };
 
+const getDescription = () => {
+    const inputs = document.querySelectorAll("#description-boxes input");
+    let description = [];
+
+    inputs.forEach((input) => {
+        description.push(input.value);
+    });
+
+    return description;
+}
+
 const resetForm = () => {
-    const form = document.getElementById("add-edit-appointment-form");
+    const form = document.getElementById("add-edit-animal-form");
     form.reset();
     form._id.value = "-1";
+    document.getElementById("description-boxes").innerHTML = "";
 };
 
 const showHideAdd = (e) => {
     e.preventDefault();
-    document.querySelector(".dialog").classList.remove("transparent");
-    document.getElementById("title").innerHTML = "Add Appointment";
+    const dialog = document.querySelector(".dialog");
+    dialog.classList.remove("transparent");
+    document.getElementById("add-edit-title").innerHTML = "Add Animal";
     resetForm();
 };
 
+const addAnimal = (e) => {
+    e.preventDefault();
+    const section = document.getElementById("descrption-boxes");
+    const input = document.createElement("input");
+    input.type = "text";
+    section.append(input);
+}
+
 window.onload = () => {
-    showAppointments();
-    document.getElementById("add-edit-appointment-form").onsubmit = addEditAppointment;
+    showAnimals();
+    document.getElementById("add-edit-animal-form").onsubmit = addEditAnimal;
     document.getElementById("add-link").onclick = showHideAdd;
 
     document.querySelector(".close").onclick = () => {
         document.querySelector(".dialog").classList.add("transparent");
     };
+
+    document.getElementById("add-animal").onclick = addAnimal;
 };
