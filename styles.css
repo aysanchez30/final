@@ -1,0 +1,365 @@
+/* Main Structure */
+body {
+    background-color: #FEF8FC;
+}
+
+#main-header {
+    background-color: #F9B7DE;
+    border-radius: 100px;
+    margin-bottom: 2%;    
+}
+#main-content {
+    background-color: #FEF8FC;
+    padding: 2%;
+}
+.padded-area {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 0;
+}
+/* About Page */
+#about-statement {
+    font-family: "Trirong", serif, bold;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 1%;
+}
+#team-section {
+    font-family: "Trirong", serif, bold;
+    padding-left: 5%;
+    padding-right: 40%;
+    padding-top: 1%;
+    padding-bottom: 8%;
+}
+#team-section ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+#team-section li {
+    padding-top: 4%;
+}
+#teams-img {
+    border-width: 3px;
+    border-color: black;
+}
+
+/* Services Page*/
+#services-main {
+    padding-right: 3%;
+    padding-left: 3%
+}
+#services-header {
+    background-color: #F9B7DE;
+    font-family: "Trirong", serif, bold;
+    align-content: center;
+    text-align: right;
+    padding-top: 4%;
+    display: flex;
+    flex: 1;
+}
+
+#services-container1,
+#services-container2,
+#services-container3,
+#services-container4 {
+    background-color: #F9B7DE;
+    font-family: "Trirong", serif, bold;
+    text-align: left;
+    margin: 2%;
+    padding: 2%;
+    border-radius: 20px;
+    display: flex;
+    flex: 3;
+    
+}
+#service-img1,
+#service-img2, 
+#service-img3,
+#service-img4 {
+    max-width: 100%;
+    border-radius: 10px;
+    margin: 1%;
+}
+.div-services {
+display: flex;
+    flex: 2;
+}
+.div-img{
+    display: flex;
+    flex: 1;
+    
+
+}
+/* Contact Page */
+h2 {
+    text-align: center;
+}
+#contact-main {
+    font-family: "Trirong", serif, bold;
+}
+.contact-padded {
+    padding: 5px;
+    margin:auto;
+}
+.contact-columns{
+    display: flex;
+    margin: 5%;
+    max-width: 100%;
+    
+}
+.contact-col2of2 {
+    background-color: grey;
+    padding: 15px;
+    margin: 7px;
+    border-radius: 50px;
+    width: 600px;
+    
+}
+.contact-col1of3, 
+.contact-col2of3, 
+.contact-col3of3 {
+    background-color: #eee;
+    padding: 5px;
+    margin: 15px;
+    border-radius: 50px;
+}
+li {
+    list-style-type: none;
+    text-align: center;
+}
+.contact-flex {
+    width: 600px;
+} 
+.number-column, 
+.email-column {
+    text-align: center;
+    height: 160px;
+    width: 300px;
+    margin: 2%;
+}
+#flex-contact-info {
+    display: flex;
+    flex: 2;
+}
+.h-captcha {
+    height: auto;
+    width: auto;
+}
+.contact-button {
+    font-family: "Trirong", serif, bold;
+    width: 200px; 
+    height:40px; 
+    font-size: 15px; 
+    background-color: white;
+    border-color: black;
+    border-width: 2px;
+    margin-top: 42%;
+    margin-left: 60%;
+    max-width: 100%;
+    
+}
+/* Schedule/cart */
+#schedule-header {
+    font-family: "Trirong", serif, bold;
+    font-size: 25px;
+    text-align: center;
+    padding: 2%;
+}
+
+#add-edit-appointment-container {
+    background-color: #F9B7DE;
+    padding: 2%;
+    border-radius: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+form {
+    text-align: center;
+    font-size: 20px;
+}
+
+select {
+    width: 25%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-size: 20px;
+    
+}
+ input {
+    width: 50%;
+    padding: px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    font-size: 20px;
+
+}
+/* Map on Contact */
+iframe {
+    width: 535px;
+    height: 200px;
+    margin-left: 15px;
+    margin-right: 15px;
+    max-width: 100%;
+}
+
+
+
+
+
+/* Form on contact page */
+.form-container {
+    text-align: left; 
+    padding-left: 20px;
+}
+
+form label {
+    display: block; 
+    font-weight: bold; 
+    margin-bottom: 5px; 
+}
+
+/* Main Navigation */
+#nav-exercises ul {
+    padding-left: 0px;
+    margin: 0;
+}
+#nav-exercises li{
+    list-style-type: none;
+    padding: 0px;
+    border-bottom: black;
+}
+#nav-exercises a {
+    text-decoration:none;
+    color: black;
+}
+#nav-exercises a:hover {
+    border-bottom: 1px solid grey;
+}
+
+
+
+/* Parsing Jason CSS*/
+body {
+    font-family: "Trirong", serif, bold;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: left;
+    color: #000000;
+}
+
+#mission-statement {
+    padding: 10px;
+    margin: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+#team {
+    margin-top: 20px;
+}
+
+#team-members {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+
+/*Button Nav */
+.schedule-button {
+    font-family: "Trirong", serif, bold;
+    width: 300px; 
+    height:50px; 
+    font-size: 25px; 
+    background-color: #F983CA;
+    border-color: black;
+    border-width: 1px;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+.button-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 10%; 
+    max-width: 100%;
+}
+/* Images */
+#main-img {
+    padding-bottom: 2%;
+    margin: auto;
+    max-width: 100%;
+    display: flex;
+}
+.cart-img {
+    padding: 1px;
+    height: 25px;
+    width: 25px;
+    position: relative;
+    left: 95%;
+}
+
+/* Typography*/
+#main-header {
+    font-family: "Trirong", serif;
+    font-size: large;
+    color: black;
+}
+#nav-exercises a {    
+    font-family: palatino;
+    font-size: small;
+    color: black;
+
+}
+#nav-exercises {
+    background-color: #F983CA;
+}
+
+#main-header h1,
+#main-content h1, 
+#nav-exercises,
+.schedule-button {
+    text-align: center;
+}
+#main-services {
+    font-family: "Trirong", serif;
+    font-size: 18px;
+     padding-left: 7%;
+    padding-right: 7%;
+
+}
+#main-services h2 {
+    font-family: "Trirong", serif, bold;
+    font-size: 22px;
+    padding-bottom: 1%;
+    padding-top: 3%;
+
+}
+
+#hamburger div {
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+}
+
+
+/*Larger Resolution*/
+@media only screen and (min-width: 600px) {
+    #nav-exercises ul {
+        display: flex;
+    }
+    #nav-exercises li {
+        flex: 1;
+    }
+    #hamburger div {
+        display: none;
+    }
+}

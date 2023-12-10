@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head class="main-header">
+    <title>Fresh Renewed Wellness</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong"> 
+</head>
+
+    <body id="schedule-body">
+        <header id="main-header" class="padded-area">
+            <h1>Fresh Renewed Wellness</h1>
+        </header>
+        <div>
+            <nav id="main-nav">
+                <div id="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            <nav id="nav-exercises">
+                <ul>
+                    <li><a href="main.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href= "scheduling.html">Book Now!</a></li>
+
+
+                </ul>
+            </nav>
+        </div>
+        <main>
+            <div class="main-title">
+                <h2>Add Service:</h2>
+                <a href="#" id="add-link">+</a>
+            </div>
+        </main>
+       
+        <div class="columns two-columns">
+            <div id="appointments-list" class="columns"></div>
+            <div id="appointments-details-column">
+                <div id="appointments-details"></div>
+            </div>
+        </div>
+    
+            <div id="add-edit-appointment-container" class="dialog transparent">
+                <span class="close">&times;</span>
+                
+                <form id="add-edit-appointment-form" method="post">
+                    <input type="hidden" name="_id" value="-1">
+                    <p> 
+                        <label for="type">Service Type:</label>
+                        <select id="type" name="type">
+                            <option type="option1">Botox</option>
+                            <option type="option2">Laser Hair Removal</option>
+                            <option type="option3">Eyeborw Lamination</option>
+                            <option type="option4">Weight Loss Therapy</option>
+
+                        </select>
+                    </p>
+                    <p>
+                        <label for="times">Select Time:</label>
+                        <select id="times" name="times">
+                            <option value="option1">9:00am</option>
+                            <option value="option2">11:00am</option>
+                            <option value="option3">12:00am</option>
+                            <option value="option4">1:00pm</option>
+                            <option value="option5">2:00pm</option>
+                            <option value="option6">3:00pm</option>
+                            <option value="option7">4:00pm</option>
+                            <option value="option8">5:00pm</option>
+                        </select>
+                        <p>
+                            <button id="add" type="submit">Add Appointment</button>
+                        </p>
+                    </form>
+                    
+                    <section id="success-message" class="hidden">
+                        <p>Your appointment has been added!</p>
+                    </section>
+            </div>
+    
+        </body>
+</html>
