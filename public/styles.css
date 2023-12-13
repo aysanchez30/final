@@ -52,45 +52,31 @@ body {
     padding-left: 3%
 }
 #services-header {
-    background-color: #F9B7DE;
+    background-color: pink;
     font-family: "Trirong", serif, bold;
-    align-content: center;
-    text-align: right;
-    padding-top: 4%;
-    display: flex;
-    flex: 1;
+    padding-right: 5%;
+    padding-left: 2%;
+    text-align: left;
 }
 
 #services-container1,
 #services-container2,
 #services-container3,
 #services-container4 {
-    background-color: #F9B7DE;
+    background-color: pink;
     font-family: "Trirong", serif, bold;
     text-align: left;
     margin: 2%;
     padding: 2%;
-    border-radius: 20px;
-    display: flex;
-    flex: 3;
     
 }
 #service-img1,
 #service-img2, 
 #service-img3,
 #service-img4 {
-    max-width: 100%;
-    border-radius: 10px;
-    margin: 1%;
-}
-.div-services {
-display: flex;
-    flex: 2;
-}
-.div-img{
+    margin-left: 88%;
     display: flex;
-    flex: 1;
-    
+    max-width: 100%;
 
 }
 /* Contact Page */
@@ -161,43 +147,6 @@ li {
     max-width: 100%;
     
 }
-/* Schedule/cart */
-#schedule-header {
-    font-family: "Trirong", serif, bold;
-    font-size: 25px;
-    text-align: center;
-    padding: 2%;
-}
-
-#add-edit-appointment-container {
-    background-color: #F9B7DE;
-    padding: 2%;
-    border-radius: 10px;
-    margin-left: 30%;
-    margin-right: 30%;
-}
-
-form {
-    text-align: center;
-    font-size: 20px;
-}
-
-select {
-    width: 25%;
-    padding: 8px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    font-size: 20px;
-    
-}
- input {
-    width: 50%;
-    padding: px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-    font-size: 20px;
-
-}
 /* Map on Contact */
 iframe {
     width: 535px;
@@ -206,8 +155,20 @@ iframe {
     margin-right: 15px;
     max-width: 100%;
 }
-
-
+/* ADD EDIT FORM */
+#add-edit-appointment-container {
+    background-color: #F9B7DE;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 10px;
+    font-size: 20px;
+}
+#success-message {
+    display: none;
+}
 
 
 
@@ -231,6 +192,7 @@ form label {
 #nav-exercises li{
     list-style-type: none;
     padding: 0px;
+    background-color:#FEF8FC;
     border-bottom: black;
 }
 #nav-exercises a {
@@ -275,21 +237,19 @@ h1 {
 /*Button Nav */
 .schedule-button {
     font-family: "Trirong", serif, bold;
-    width: 300px; 
-    height:50px; 
+    width: 600px; 
+    height:60px; 
     font-size: 25px; 
     background-color: #F983CA;
     border-color: black;
     border-width: 1px;
     white-space: nowrap;
-    max-width: 100%;
   }
 .button-container {
     display: flex;
     justify-content: center; 
     align-items: center; 
     height: 10%; 
-    max-width: 100%;
 }
 /* Images */
 #main-img {
@@ -317,9 +277,6 @@ h1 {
     font-size: small;
     color: black;
 
-}
-#nav-exercises {
-    background-color: #F983CA;
 }
 
 #main-header h1,
